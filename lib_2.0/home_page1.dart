@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../user_bloc/user_bloc.dart';
+import '../lib_2.0/user_bloc/user_bloc.dart';
 import 'counter_bloc.dart';
 
 class MyHomePage extends StatelessWidget {
