@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_1/search_bloc.dart';
@@ -39,8 +41,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final users = context.select((SearchBloc bloc) => bloc.state.users);
-    if (users.isEmpty) {
+    final stores = context.select((SearchBloc bloc) => bloc.state.stores);
+    if (stores.isEmpty) {
       context.read<SearchBloc>().add(SearchUserEvent('---'));
     }
     return Column(
@@ -57,7 +59,7 @@ class MyHomePage extends StatelessWidget {
             context.read<SearchBloc>().add(SearchUserEvent(value));
           },
         ),
-        if (users.isNotEmpty)
+        if (stores.isNotEmpty)
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
@@ -72,9 +74,9 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Expanded(
                               child: Text(
-                                users[index]['name'],
-                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-                              )),
+                            stores[index]['name'],
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                          )),
                         ],
                       ),
                       const SizedBox(
@@ -86,7 +88,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              users[index]['address'],
+                              stores[index]['address'],
                               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
                             ),
                           ),
@@ -101,7 +103,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              users[index]['schedule'],
+                              stores[index]['schedule'],
                               style: const TextStyle(fontSize: 14.0),
                             ),
                           ),
@@ -111,7 +113,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: users.length,
+              itemCount: stores.length,
             ),
           ),
       ],

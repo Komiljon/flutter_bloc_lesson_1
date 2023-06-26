@@ -29,23 +29,22 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   _onSearch(SearchUserEvent event, Emitter<SearchState> emit) async {
     if (event.query.length < 3) return;
-    if(event.query == '---'){
+    if (event.query == '---') {
       final res = await _httpClient.get(
         apiUrl,
         queryParameters: {
           'query': '',
         },
       );
-      emit(SearchState(users: res.data['offices']));
-    }else{
+      emit(SearchState(stores: res.data['offices']));
+    } else {
       final res = await _httpClient.get(
         apiUrl,
         queryParameters: {
           'query': event.query,
         },
       );
-      emit(SearchState(users: res.data['offices']));
+      emit(SearchState(stores: res.data['offices']));
     }
-
   }
 }
